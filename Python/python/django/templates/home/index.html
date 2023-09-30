@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}  <!-- Extiende la plantilla base -->
+
+{% block title %}
+    Index View  <!-- Define el título de la página -->
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+
+  <table class="table table-striped">  <!-- Comienza una tabla con clases de Bootstrap -->
+    <thead>  <!-- Encabezado de la tabla -->
+        <tr>
+            <th>ID</th>  <!-- Columna para mostrar el ID -->
+            <th>Especie</th>  <!-- Columna para mostrar el nombre -->
+            <th>Raza</th>  <!-- Columna para mostrar el estado -->
+            <th>Nombre</th>  <!-- Columna para mostrar las acciones -->
+            <th>Actualizar</th>  <!-- Columna para mostrar las acciones -->
+            <th>Eliminar</th>  <!-- Columna para mostrar las acciones -->
+        </tr>
+    </thead>
+    <tbody>  <!-- Cuerpo de la tabla -->
+      
+
+</div>
+  
+{% for c in mascotas %}
+<tr>
+  <td>
+    {{c.id}}
+  </td>
+  <td>
+    {{c.especie}}
+  </td>
+  <td>
+    {{c.raza}}
+  </td>
+  <td>
+    {{c.nombre}}  <td>  <button type="button" class="btn btn-primary">Actualizar</button> </td>  <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+  </td>
+</tr>
+{% endfor %}
+</tbody>
+    </table>  <!-- Fin de la tabla -->
+{% endblock content %}  <!-- Fin del bloque de contenido -->
+

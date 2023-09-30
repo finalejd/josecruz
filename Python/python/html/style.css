@@ -1,0 +1,74 @@
+
+body{ 
+    background-image: url(julio.jpg);
+    background-size: cover;
+}
+
+h1{
+    background-color: brown;
+    text-align: center; 
+}
+
+table{
+    border: 3px solid blue;
+    border-radius: 10px;
+    width: 100%;
+    border-spacing: 30px;
+}
+
+th, td{
+    padding-left: 20px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+
+header{
+    background: rgba(158, 184, 11, 0.7);
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}  
+
+header {
+    background: rgba(0,0,0,0.7);
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    border-radius: 10px;
+  }
+  
+  nav {
+    float: left;
+    border-radius: 5px;
+  }
+  
+  nav ul {
+    list-style: none;
+    overflow: hidden; 
+  }
+  
+  nav ul li {
+    float: left;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  nav ul li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration:double;
+  }
+  nav ul li:hover {
+    background: #007bee;
+    border-radius: 10px;
+  }
+
+
+video{
+    background-color: black;
+}
