@@ -1,0 +1,58 @@
+{% extends "./base.html" %}
+
+{% block title %} Edit Team {% endblock %}
+
+{% block body %}
+
+<h2>Gestión de Equipo</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarEquipo/" method="POST">{% csrf_token %}
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="numEquipo" max_length="10" name="numEquipo" value="{{list.numEquipo}}" class="form-control" placeholder="Number's team"
+                         required readonly>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="nombreEquipo" name="nombreEquipo" value="{{list.nombreEquipo}}" class="form-control" placeholder="Team's name"
+                            maxlength="50" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <select name="nombreCiudad" id="nombreCiudad" class="form-select" aria-label="Default select example">
+                            <option value="None">Choose a city</option>
+                            <option value="Kansas">Kansas</option>
+                            <option value="Dallas">Dallas</option>
+                            <option value="Carolina">Carolina</option>
+                            <option value="Denver">Denver</option>
+                            <option value="Seattle">Seattle</option>
+                            <option value="Washington">Washington</option>
+                            <option value="Cleveland">Cleveland</option>
+                            <option value="Detroit">Detroit</option>
+                            <option value="New England">New England </option>
+                            <option value="Miami">Miami</option>
+                          </select>
+
+                    <div class="form-group py-2">
+                        <select name="nombreEstadio" id="nombreEstadio" class="form-select" aria-label="None">
+                            <option value="None">Choose a stadium</option>
+                            <option value="Arrowhead Stadium">Arrowhead Stadium</option>
+                            <option value="AT&T Stadium">AT&T Stadium</option>
+                            <option value="Bank of America Stadium">Bank of America Stadium</option>
+                            <option value="Empower Field at Mile High">Empower Field at Mile High</option>
+                            <option value="FirstEnergy Stadium">FirstEnergy Stadium</option>
+                            <option value="FedEx Field">FedEx Field</option>
+                            <option value="Ford Field">Ford Field</option>
+                            <option value="Gillette Stadium">Gillette Stadium</option>
+                            <option value="Hard Rock Stadium">Hard Rock Stadium</option>
+                          </select>
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-success btn-block text-white">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% endblock %}

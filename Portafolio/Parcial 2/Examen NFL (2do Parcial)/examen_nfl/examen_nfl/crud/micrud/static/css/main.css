@@ -1,0 +1,22 @@
+th, td{
+    text-align: center;
+    vertical-align: -webkit-baseline-middle;
+    }
+
+body {
+    background-image: url(../imagenes/wallpaper.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: aliceblue;
+}
+#lista{
+    text-align: center;
+}
+
+#tarjeta{
+
+    width: 10px;
+
+
+}
