@@ -1,0 +1,100 @@
+{% extends "./base.html" %}
+
+{% block title %} NFL - Team Management  {% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+        {% for message in messages %}
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong class="text-dark">{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <h2>Add a team</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/agregarEquipo/" method="POST">{% csrf_token %}
+                    <div class="form-group py-2">
+                        <input type="number" id="numEquipo" name="numEquipo" class="form-control" placeholder="Number's team"
+                              max_length="10" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <input type="text" id="nombreEquipo" name="nombreEquipo" class="form-control" placeholder="Team's name"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group py-2">
+                        <select name="nombreCiudad" id="nombreCiudad" class="form-select" aria-label="Default select example">
+                            <option value="None">Choose a city</option>
+                            <option value="Kansas">Kansas</option>
+                            <option value="Dallas">Dallas</option>
+                            <option value="Carolina">Carolina</option>
+                            <option value="Denver">Denver</option>
+                            <option value="Seattle">Seattle</option>
+                            <option value="Washington">Washington</option>
+                            <option value="Cleveland">Cleveland</option>
+                            <option value="Detroit">Detroit</option>
+                            <option value="New England">New England </option>
+                            <option value="Miami">Miami</option>
+                          </select>
+                    </div>
+                    <div class="form-group py-2">
+                        <select name="nombreEstadio" id="nombreEstadio" class="form-select" aria-label="None">
+                            <option value="None">Choose a stadium</option>
+                            <option value="Arrowhead Stadium">Arrowhead Stadium</option>
+                            <option value="AT&T Stadium">AT&T Stadium</option>
+                            <option value="Bank of America Stadium">Bank of America Stadium</option>
+                            <option value="Empower Field at Mile High">Empower Field at Mile High</option>
+                            <option value="FirstEnergy Stadium">FirstEnergy Stadium</option>
+                            <option value="FedEx Field">FedEx Field</option>
+                            <option value="Ford Field">Ford Field</option>
+                            <option value="Gillette Stadium">Gillette Stadium</option>
+                            <option value="Hard Rock Stadium">Hard Rock Stadium</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>Teams List</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Team Number</th>
+                        <th>Team's name</th>
+                        <th>City</th>
+                        <th>Stadium</th>
+                        <th colspan="2">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for l in list %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{l.numEquipo}}</td>
+                        <td>{{l.nombreEquipo}}</td>
+                        <td>{{l.nombreCiudad}}</td>
+                        <td>{{l.nombreEstadio}}</td>
+                        <td><a href="/edicionEquipo/{{l.numEquipo}}" class="btn btn-info">Edit</a></td>
+                        <td><a href="/eliminarEquipo/{{l.numEquipo}}" class="btn btn-danger btnEliminacion">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+
+    
+</div>
+{% endblock %}
