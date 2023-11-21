@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block title %} Informacion de perfil {% endblock title %}
+{{ profile }}
+
+{% block content %}
+
+{% for p in profile %}
+
+<h1>  HOla {{p.user}} </h1>
+
+{% endfor %}
+
+{% endblock %}
+

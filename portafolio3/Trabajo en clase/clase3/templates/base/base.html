@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title%}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                      <a class="navbar-brand" href="{% url 'home:index' %}">PROCOM</a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'core:list_product' %}">Home</a>
+                          </li>                          
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Categories
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">New Category</a></li>
+                              <li><a class="dropdown-item" href="#">List Categories</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Update Category</a></li>
+                              <li><a class="dropdown-item" href="#">Delete Category</a></li>
+                            </ul>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              SubCategories
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">New SubCategory</a></li>
+                              <li><a class="dropdown-item" href="#">List SubCategories</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Update SubCategory</a></li>
+                              <li><a class="dropdown-item" href="#">Delete SubCategory</a></li>
+                            </ul>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Products
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{% url 'core:create_product' %}">New Product</a></li>
+                              <li><a class="dropdown-item" href="#">List Products</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="">Update Product</a></li>
+                              <li><a class="dropdown-item" href="#">Delete Product</a></li>
+                            </ul>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Brands
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">New Brand</a></li>
+                              <li><a class="dropdown-item" href="#">List Brands</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Update Brand</a></li>
+                              <li><a class="dropdown-item" href="#">Delete Brand</a></li>
+                            </ul>
+                          </li>                    
+                        </ul>
+                        {% if request.user.is_authenticated %} 
+                        <a href="{% url 'home:detail_profile' request.user.pk %}" class="btn btn-link">{{ request.user.username}}</a>
+                        <a href="{% url 'home:logout'%}">LogOut</a>
+                        {% else %} <a href="{% url 'home:index'%}"> LogIn</a>
+                        {% endif %}
+                        <form class="d-flex" role="search">
+                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                      </div>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+    
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+
+
+{% extends "base/base.html" %}
+
+{% block title %}
+  Vista de detalles de productos
+{% endblock title %}
+
+{% block content %}
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            {{ product }}
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the Product: {{ product.product_name }}.</strong> It is shown: {{ product.description }}, <br>
+          timestamp: {{ product.timestamp}} --- category: {{ product.subcategory }}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Brand: {{ product.brand }}
+          
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the Status: {{ product.status }}.</strong> <br>
+          Stock: {{ product.stock }}
+          <hr>
+          <a href="{% url 'core:list_product' %}" class="btn btn-link">back to list</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+{% endblock content %}

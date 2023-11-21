@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Index View{% endblock title %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+<h1>Bienvenido {{user}}!</h1>
+
+
+
+    <table class="table">
+        <thead>
+            <th>Item 1</th>
+            <th>Item 2</th>
+            <th>Item 3</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>article uno</td>
+                <td>article dos</td>
+                <td>article tres</td>
+            </tr>
+            <tr>
+                <td>Cuatro</td>
+                <td>Cinco</td>
+                <td>Seis</td>
+            </tr>
+            <tr>
+                <td>Siete</td>
+                <td>Ocho</td>
+                <td>Nueve</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+{% else %}
+
+<br>
+<hr>
+
+<form action="" method="POST" class="post-form">
+{% csrf_token %}
+{{form}}
+<br><hr>
+<button type="submit" class="btn btn-outline-success form-control">Iniciar sesion</button>
+</form>
+
+
+<p>
+   ¿No tienes una cuenta? Registrate!
+    <a href="{% url 'home:signup' %}" class="btn btn-link">Crear Cuenta</a>
+</p>
+
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+  DELETE PRODUCT VIEW
+{% endblock title %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+            <div class="card-header">Delete Product</div>
+            <div class="card-body">
+              <h4 class="card-title">{{ object.product_name }}</h4>
+              <p>¿Realmente deseas eliminar este producto?</p>
+              <button type="submit" class="btn btn-danger">Delete Product</button>
+              <a href="{% url 'core:list_product' %}" class="btn btn-warning">Cancel</a>
+            </div>
+          </div>
+        
+        
+        
+    </form>
+{% endblock content %}  
