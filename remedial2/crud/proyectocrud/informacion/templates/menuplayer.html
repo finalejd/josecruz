@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %} Menu players {% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h1>Register a new player</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registerPlayer/" method="POST"> {% csrf_token %}
+
+                    <div class="form-group py-2">
+                        <input type="number" id="number" name="number" class="form-control"
+                            placeholder="Number control" minlength="1" maxlength="5" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="namePlayer" name="namePlayer" class="form-control"
+                            placeholder="Playe's name" minlength="1" maxlength="20" required>
+                    </div>
+    
+                    <div class="form-group py-2">
+                        <input type="number" id="playerNumber" name="playerNumber" class="form-control"
+                            placeholder="Player number" minlength="1" maxlength="5" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="tel" id="playerPosition" name="playerPosition" class="form-control"
+                            placeholder="Player position" minlength="1" maxlength="20" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <h4>Selecet a register team</h4>
+                        <select id="teams" name="team">
+                            {% for t in teams %}
+                            <option value="{{s.number}}">{{t.number}} : {{t.nameTeam}}</option>
+                            {% endfor %}
+                        </select> 
+                    </div>
+
+                    <div class="form-group py-4">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <h1>List of players</h1>
+                        <tr>
+                            <th>Number control</th>
+                            <th>Name Player</th>
+                            <th>Player Number</th>
+                            <th>Ṕlayer Position</th>
+                            <th>Team</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in players %}
+                        <tr>
+                            <th>{{p.number}}</th>
+                            <th>{{p.namePlayer}}</th>
+                            <th>{{p.playerNumber}}</th>
+                            <th>{{p.playerPosition}}</th>
+                            <th>{{p.team}}</th>
+
+
+
+                            <td><a href="../editionPlayer/{{p.number}}" class="btn btn-info">Edit</a></td>
+                            <td><a href="../deletePlayer/{{p.number}}" class="btn btn-danger btnEliminacion">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    {% endblock %}

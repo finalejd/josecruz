@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %} Menu Teams {% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h1>Register a Team</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registerTeams/" method="POST"> {% csrf_token %}
+
+                    <div class="form-group py-2">
+                        <input type="number" id="number" name="number" class="form-control"
+                            placeholder="Number team" minlength="1" maxlength="5" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="nameTeam" name="nameTeam" class="form-control"
+                            placeholder="Name Team" minlength="1" maxlength="20" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="venue" name="venue" class="form-control"
+                            placeholder="Venue" minlength="1" maxlength="20" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="ownerName" name="ownerName" class="form-control"
+                            placeholder="Owner's name" minlength="1" maxlength="20" required>
+                    </div>
+
+                    
+                    <div class="form-group py-2">
+                        <h4>Select a register stadium</h4>
+                        <select id="stadium" name="stadium">
+                            {% for t in teams %}
+                            <option value="{{s.number}}">{{t.number}} : {{s.nameTeam}}</option>
+                            {% endfor %}
+                        </select> 
+                    </div>
+
+                    <div class="form-group py-4">
+                        <button type="submit" class="btn btn-success btn-block text-white">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <h1>List of Teams</h1>
+                        <tr>
+                            <th>Number Team</th>
+                            <th>Team's Name</th>
+                            <th>Venue</th>
+                            <th>Owner's Name</th>
+                            <th>Stadium</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for t in teams %}
+                        <tr>
+                            <th>{{t.number}}</th>
+                            <th>{{t.nameTeam}}</th>
+                            <th>{{t.venue}}</th>
+                            <th>{{t.ownerName}}</th>
+                            <th>{{t.stadium}}</th>
+
+
+
+                            <td><a href="../editionTeams/{{t.number}}" class="btn btn-info">Edit</a></td>
+                            <td><a href="../deleteTeams/{{t.number}}" class="btn btn-danger btnEliminacion">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    {% endblock %}

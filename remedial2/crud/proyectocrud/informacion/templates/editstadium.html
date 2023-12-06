@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %} Edit a stadium {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edit a stadium</h2>
+        <div class="card">
+            <div class="card-body">
+
+                <form action="/editStadium/" method="POST"> {% csrf_token %}
+
+                    <div class="form-group py-2">
+                        <input type="number" id="number" name="number" class="form-control"
+                            value="{{stadium.number}}" required readonly>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="nameStadium" name="nameStadium" class="form-control"
+                            placeholder="Name stadium" minlength="1" maxlength="20" required>
+                    </div>
+    
+                    <div class="form-group py-2">
+                        <input type="text" id="capacity" name="capacity" class="form-control"
+                            placeholder="Capacity" minlength="1" maxlength="5" required>
+                    </div>
+
+                    <div class="form-group py-2">
+                        <input type="text" id="boxSize" name="boxSize" class="form-control"
+                            placeholder="Box Size" minlength="1" maxlength="20" required>
+                    </div>
+
+                    <div class="form-group py-4">
+                        <button type="submit" class="btn btn-success btn-block text-white">Edit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
